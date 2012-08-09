@@ -2,14 +2,18 @@
 # attempt to do a DNS update when a lease is confirmed. We default to the
 # behavior of the version 2 packages ('none', since DHCP v2 didn't
 # have support for DDNS.)
+<% if @ddnsstyle.nil? %>
 ddns-update-style none;
+<% else %>
+ddns-update-style @ddnsstyle;
+<% end %>
 
 # option definitions common to all supported networks...
 option domain-name "<%= @domainname %>";
-<% unless @nameservers.nil? -%>
-option domain-name-servers <%= @nameservers.join(' ,') %>;
-<% else -%>
+<% if @nameservers.nil? -%>
 option domain-name-servers 8.8.8.8, 8.8.4.4;
+<% else -%>
+option domain-name-servers <%= @nameservers.join(' ,') %>;
 <% end -%>
 
 default-lease-time 600;

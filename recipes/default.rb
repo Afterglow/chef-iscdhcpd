@@ -42,6 +42,7 @@ template "/etc/dhcp/dhcpd.conf" do
   group "root"
   mode "0644"
   variables({
+    :ddnsstyle => node['dhcpd']['ddnsstyle'],
     :domainname => node['dhcpd']['domainname'],
     :nameservers => node['dhcpd']['nameservers'],
     :authoritative => node['dhcpd']['authoritative'],
