@@ -29,4 +29,4 @@ like name or ntp servers. An example databag might look like...
 Usage
 =====
 
-Add recipe[iscdhcpd] to your runlist. Configure attributes and data_bags as above.
+Add `recipe[iscdhcpd]` to your runlist. Configure attributes and data_bags as above.
