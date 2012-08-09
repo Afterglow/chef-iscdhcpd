@@ -1,0 +1,17 @@
+# Defaults for dhcp initscript
+# sourced by /etc/init.d/dhcp
+# installed at /etc/default/isc-dhcp-server by the maintainer scripts
+# AUTOMATICALLY MAINTAINED BY CHEF
+# DO NOT EDIT BY HAND
+
+#
+# This is a POSIX shell fragment
+#
+
+# On what interfaces should the DHCP server (dhcpd) serve DHCP requests?
+#       Separate multiple interfaces with spaces, e.g. "eth0 eth1".
+<% unless @interfaces.nil? -%>
+INTERFACES="<%= @interfaces.join(' ') %>"
+<% else %>
+INTERFACES=""
+<% end %>
