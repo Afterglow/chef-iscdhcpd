@@ -49,6 +49,11 @@ subnet <%= net['network'] %> netmask <%= net['netmask'] %> {
   <% unless net['range'].nil? -%>
   range <%= net['range']['start'] %> <%= net['range']['end'] %>;
   <% end -%>
+  <% unless net['customlines'].nil? -%>
+  <% net['customlines'].each do |line| -%>
+  <%= line %>
+  <% end -%>
+  <% end -%>
 }
 <% end -%>
 <% end -%>

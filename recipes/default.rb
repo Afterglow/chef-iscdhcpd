@@ -48,6 +48,7 @@ template "/etc/dhcp/dhcpd.conf" do
     :authoritative => node['dhcpd']['authoritative'],
     :logfacility => node['dhcpd']['logfacility'],
     :ntpservers => node['dhcpd']['ntpservers'],
-    :subnets => subnets
+    :subnets => subnets,
+    :customlines => node['dhcpd']['customlines']
   })
 end
