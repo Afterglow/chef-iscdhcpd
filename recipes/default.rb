@@ -16,18 +16,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-package "isc-dhcp-server" do
+package "dhcpd" do
+  package_name node['dhcpd']['package']
   action :install
 end
 
-template "/etc/default/isc-dhcp-server" do
-  source "default-dhcp-server.erb"
-  owner "root"
-  group "root"
-  mode "0644"
-  variables({
-    :interfaces => node['dhcpd']['interfaces']
-  })
+if platform_family?("ubuntu", "debian")
+  template "/etc/default/isc-dhcp-server" do
+    source "default-dhcp-server.erb"
+    owner "root"
+    group "root"
+    mode "0644"
+    variables({
+      :interfaces => node['dhcpd']['interfaces']
+    })
+  end
 end
 
 subnets = Hash.new()
