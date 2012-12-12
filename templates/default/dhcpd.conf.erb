@@ -23,14 +23,10 @@ max-lease-time 7200;
 authoritative;
 <% end -%>
 
-<% if @logfacility.nil? -%>
-log-facility local7;
-<% else -%>
-log-facility <%= @logfacility %>
-<% end -%>
+log-facility <%= @logfacility %>;
 
 <% unless @ntpservers.nil? -%>
-option ntp-servers <%= @ntpservers.join(', ') %>
+option ntp-servers <%= @ntpservers.join(', ') %>;
 <% end -%>
 
 <% unless @subnets.nil? -%>
